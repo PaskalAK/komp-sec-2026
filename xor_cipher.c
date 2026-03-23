@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h> 
+
+char* xor_cipher(char *text, char key) {
+    int len = strlen(text);
+    char* result= malloc(sizeof(char) * (len + 1));
+    for (int i = 0; i < len; i++) {
+        result[i] = text[i] ^ key;
+    }
+    result[len]= '\0';
+    return result;
+}
+
+int main() {
+    char data[] = "Secret";
+    char key = 'K';
+    char* encrypted = xor_cipher(data, key);
+    printf("Encrypted: %s\n", encrypted); 
+    char* decryted = xor_cipher(encrypted, key);
+    printf("Decrypted: %s\n", decryted);
+    return EXIT_SUCCESS;
+}
